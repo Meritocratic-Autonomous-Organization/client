@@ -25,6 +25,8 @@ import {
   isSignatureSuccess,
 } from './signer-statuses'
 
+const PRIORITY_FEE_MULTIPLIER = 1.3  // need more agressive priorityFees since 04.23 otherwise transactions on Polygon got stuck (in MATIC is about +0.01 to ~0.05 overall fee)
+
 const INITIAL_STATE = {
   actionPaths: [],
   directPath: false,
@@ -321,7 +323,7 @@ class SignerPanel extends React.PureComponent {
     const estimatedPriorityFee = await getPriorityFeeEstimation(walletWeb3)
     return {
       ...transaction,
-      maxPriorityFeePerGas: estimatedPriorityFee,
+      maxPriorityFeePerGas: estimatedPriorityFee * PRIORITY_FEE_MULTIPLIER,
     }
   }
 
