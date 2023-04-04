@@ -32,7 +32,7 @@ export function pollEvery(fn, delay) {
 // Get the icon URL of an app (legacy)
 export function legacyAppIconUrl(app) {
   return app && app.baseUrl
-    ? resolvePathname('images/icon.svg', app.baseUrl)
+    ? resolvePathname('meta/icon.svg', app.baseUrl)
     : null
 }
 
